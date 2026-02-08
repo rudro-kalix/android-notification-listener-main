@@ -45,6 +45,7 @@ dependencies {
     implementation(libs.firebase.firestore)
     implementation(libs.guava)
     implementation(libs.androidx.concurrent.futures.ktx)
+    implementation("androidx.concurrent:concurrent-futures-ktx:1.2.0")
     implementation(libs.kotlinx.serialization.json.jvm)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
