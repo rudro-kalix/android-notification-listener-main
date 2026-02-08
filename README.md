@@ -37,7 +37,7 @@ The app listens to incoming transaction notifications from supported payment app
 
 
 
-## 🛠 Tech Stack
+##  Tech Stack
 - **Android (Kotlin)**
 - Notification Listener Service
 - Firestore (Firebase)
