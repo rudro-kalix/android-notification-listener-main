@@ -36,7 +36,6 @@ import java.util.Locale
 
 @Composable
 fun MainScreen(
-    context: Context,
     modifier: Modifier = Modifier,
     onSettingsClick: () -> Unit = {}
 ) {

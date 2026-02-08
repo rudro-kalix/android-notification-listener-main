@@ -107,7 +107,6 @@ fun ScreenHolder(modifier: Modifier = Modifier) {
         )
     } else {
         MainScreen(
-            context = context,
             modifier = modifier,
             onSettingsClick = { showSettings = true }
         )
