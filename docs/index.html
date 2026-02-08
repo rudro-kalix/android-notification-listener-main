@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Automatic Payment Gateway (Android Notification Listener)</title>
+    <meta
+      name="description"
+      content="Android notification listener that extracts payment transaction data and syncs it to Firestore."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">Android • Kotlin • Firestore</p>
+          <h1>Automatic Payment Gateway</h1>
+          <p class="lede">
+            Capture transaction notifications, parse the essentials, and sync
+            them to Firestore so your web dashboards and backend workflows stay
+            in lockstep.
+          </p>
+          <div class="cta-row">
+            <a class="button" href="https://github.com/" aria-label="View on GitHub">
+              View on GitHub
+            </a>
+            <span class="note">Designed for educational and experimental use.</span>
+          </div>
+        </div>
+        <div class="card">
+          <h2>Core Highlights</h2>
+          <ul>
+            <li>Listens to incoming transaction notifications.</li>
+            <li>Extracts transaction ID, amount, sender, and package name.</li>
+            <li>Syncs data to Firestore for easy integration.</li>
+          </ul>
+        </div>
+      </header>
+
+      <main class="content">
+        <section>
+          <h2>Use Cases</h2>
+          <div class="grid">
+            <article>
+              <h3>Automatic Verification</h3>
+              <p>
+                Keep payment statuses updated automatically for websites and
+                dashboards without manual checks.
+              </p>
+            </article>
+            <article>
+              <h3>Realtime Reconciliation</h3>
+              <p>
+                Match incoming payments with backend records for faster
+                settlement.
+              </p>
+            </article>
+            <article>
+              <h3>Mobile-to-Web Bridge</h3>
+              <p>
+                Connect Android payment notifications to web apps and services
+                with a lightweight pipeline.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section>
+          <h2>Notes &amp; Limitations</h2>
+          <ul class="bullets">
+            <li>Requires Notification Access permission on-device.</li>
+            <li>Works only with payment apps that show transaction details.</li>
+            <li>Built for personal, educational, and experimental use.</li>
+          </ul>
+        </section>
+      </main>
+
+      <footer>
+        <p>
+          This project respects security boundaries and only processes
+          user-visible notification content with explicit permission.
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>
