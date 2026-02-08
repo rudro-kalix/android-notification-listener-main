@@ -1,6 +1,5 @@
 package ee.kytt.androidnotificationlistener.ui
 
-import android.content.Context
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -20,11 +19,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import ee.kytt.androidnotificationlistener.R
-import ee.kytt.androidnotificationlistener.ui.element.ContentGroup
 
 @Composable
 fun MainScreen(
-    context: Context,
     modifier: Modifier = Modifier,
     onSettingsClick: () -> Unit = {}
 ) {
@@ -50,13 +47,5 @@ fun MainScreen(
         }
 
         Spacer(modifier = Modifier.height(32.dp))
-
-        ContentGroup(title = stringResource(R.string.sync_chart_title)) {
-            WeeklyChart(context)
-        }
-
-        SyncStatusGroup(context)
-
-        LatestErrorGroup(context)
     }
 }
