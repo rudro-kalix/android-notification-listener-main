@@ -5,17 +5,11 @@ import android.app.Notification.EXTRA_SUB_TEXT
 import android.app.Notification.EXTRA_TEXT
 import android.app.Notification.EXTRA_TITLE
 import android.service.notification.StatusBarNotification
-import androidx.room.ColumnInfo
-import androidx.room.Entity
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.Transient
 import java.security.MessageDigest
-import java.time.Instant
-import java.time.ZoneId
 
 @OptIn(kotlinx.serialization.InternalSerializationApi::class)
 @Serializable
-@Entity(tableName = "notifications", primaryKeys = ["id"])
 data class Notification(
     val id: String,
     val packageName: String,
@@ -25,15 +19,7 @@ data class Notification(
     val subText: String,
     val bigText: String,
     val category: String,
-    val time: Long,
-
-    @Transient
-    @ColumnInfo(name = "day")
-    var day: Long = 0L,
-
-    @Transient
-    @ColumnInfo(name = "synchronized")
-    val synchronized: Boolean = false
+    val time: Long
 ) {
     companion object {
         fun hashId(input: String): String {
@@ -51,11 +37,7 @@ data class Notification(
         subText = sbn.notification.extras.getCharSequence(EXTRA_SUB_TEXT, "").toString(),
         bigText = sbn.notification.extras.getCharSequence(EXTRA_BIG_TEXT, "").toString(),
         category = sbn.notification.category ?: "",
-        time = sbn.postTime,
-        day = Instant.ofEpochMilli(sbn.postTime)
-            .atZone(ZoneId.systemDefault())
-            .toLocalDate()
-            .toEpochDay()
+        time = sbn.postTime
     )
 
     fun description(): String {
