@@ -1,6 +1,5 @@
 package ee.kytt.androidnotificationlistener.ui
 
-import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
 import androidx.compose.foundation.layout.Arrangement
@@ -25,6 +24,7 @@ import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import ee.kytt.androidnotificationlistener.Constants
@@ -39,6 +39,7 @@ fun MainScreen(
     modifier: Modifier = Modifier,
     onSettingsClick: () -> Unit = {}
 ) {
+    val context = LocalContext.current
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -67,7 +68,7 @@ fun MainScreen(
 }
 
 @Composable
-private fun StatsGroup(context: Context) {
+private fun StatsGroup(context: android.content.Context) {
     val prefs = context.getSharedPreferences(Constants.PREFS_NAME, MODE_PRIVATE)
     val receivedCount = remember { mutableIntStateOf(prefs.getInt(Constants.PREF_RECEIVED_COUNT, 0)) }
     val syncedCount = remember { mutableIntStateOf(prefs.getInt(Constants.PREF_SYNCED_COUNT, 0)) }
