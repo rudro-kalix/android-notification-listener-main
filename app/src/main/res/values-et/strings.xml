@@ -9,9 +9,16 @@
     <string name="auto_revoke_permissions_description">Hoia see seade keelatuna, et vältida automaatset õiguste eemaldamist, mis võib takistada rakendusel teavitusi kogumast.</string>
     <string name="allow_notification_access">Luba teavituste ligipääs</string>
     <string name="allow_notification_access_description">Anna teavituste ligipääs, et rakendus saaks lugeda teiste rakenduste teavitusi. Vajalik põhifunktsionaalsuse jaoks.</string>
+    <string name="allow_background_title">Luba taustal töötamine</string>
+    <string name="allow_background_description">Lülita aku optimeerimine välja, et rakendus saaks taustal töötada.</string>
     <string name="monitor_matching_apps">Jälgi sobivaid rakendusi</string>
     <string name="monitor_all_apps">Jälgi kõiki rakendusi</string>
     <string name="monitor_matching_apps_description">Jälgi ainult rakendusi, mille paketinimed vastavad antud regulaaravaldistele. Jäta tühjaks, et jälgida kõiki rakendusi.</string>
+    <string name="sync_stats_title">Sünkroonimise statistika</string>
+    <string name="notifications_received">Saadud teavitused</string>
+    <string name="notifications_synced">Sünkroonitud teavitused</string>
+    <string name="notifications_failed">Nurjunud katsed</string>
+    <string name="last_sync_time">Viimane sünkroonimine</string>
     <string name="datetime_format">dd.MM.yyyy HH:mm</string>
     <string name="datetime_never">pole</string>
 </resources>

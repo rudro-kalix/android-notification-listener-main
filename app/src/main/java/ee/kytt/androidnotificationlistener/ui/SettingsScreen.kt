@@ -66,6 +66,10 @@ fun SettingsScreen(
             HorizontalDivider(modifier = divModifier)
 
             AutoRevokeStatusButton(context)
+
+            HorizontalDivider(modifier = divModifier)
+
+            BackgroundPermissionButton(context)
         }
 
         ContentGroup(title = stringResource(R.string.filter)) {

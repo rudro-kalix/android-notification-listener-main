@@ -9,9 +9,16 @@
     <string name="auto_revoke_permissions_description">Keep this setting disabled to avoid automatic permission revocation, which may prevent the app from collecting notification data.</string>
     <string name="allow_notification_access">Allow notification access</string>
     <string name="allow_notification_access_description">Grant notification access so the app can read notifications from other apps. Required for core functionality.</string>
+    <string name="allow_background_title">Allow background execution</string>
+    <string name="allow_background_description">Disable battery optimizations so the app can keep running in the background.</string>
     <string name="monitor_matching_apps">Monitor matching applications</string>
     <string name="monitor_all_apps">Monitor all applications</string>
     <string name="monitor_matching_apps_description">Only monitor apps whose package names match the provided regular expression. Leave blank to monitor all apps.</string>
+    <string name="sync_stats_title">Sync stats</string>
+    <string name="notifications_received">Notifications received</string>
+    <string name="notifications_synced">Notifications synced</string>
+    <string name="notifications_failed">Failed attempts</string>
+    <string name="last_sync_time">Last sync time</string>
     <string name="datetime_format">yyyy-MM-dd HH:mm</string>
     <string name="datetime_never">never</string>
 </resources>

@@ -76,6 +76,8 @@ class NotificationListener : NotificationListenerService() {
             return
         }
 
+        incrementCount(prefs, Constants.PREF_RECEIVED_COUNT)
+
         // =====================
         // FIRESTORE
         // =====================
@@ -101,9 +103,14 @@ class NotificationListener : NotificationListenerService() {
             .set(data)
             .addOnSuccessListener {
                 Log.d("FIREBASE", "Uploaded: $docId amount=$amount")
+                incrementCount(prefs, Constants.PREF_SYNCED_COUNT)
+                prefs.edit()
+                    .putLong(Constants.PREF_LAST_SYNC_TIME, System.currentTimeMillis())
+                    .apply()
             }
             .addOnFailureListener { e ->
                 Log.e("FIREBASE", "Upload failed", e)
+                incrementCount(prefs, Constants.PREF_FAILED_COUNT)
             }
 
         Log.d("NotificationListener", Json.Default.encodeToString(notification))
@@ -117,5 +124,10 @@ class NotificationListener : NotificationListenerService() {
             Log.w("NotificationListener", "Invalid regex pattern", e)
             false
         }
+    }
+
+    private fun incrementCount(prefs: android.content.SharedPreferences, key: String) {
+        val current = prefs.getInt(key, 0)
+        prefs.edit().putInt(key, current + 1).apply()
     }
 }
