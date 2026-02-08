@@ -5,6 +5,7 @@ firebaseDatabase = "21.0.0"
 agp = "8.9.1"
 kotlin = "2.0.21"
 coreKtx = "1.10.1"
+concurrentFutures = "1.2.0"
 junit = "4.13.2"
 junitVersion = "1.1.5"
 espressoCore = "3.5.1"
@@ -25,6 +26,7 @@ guava = { module = "com.google.guava:guava", version.ref = "guava" }
 
 firebase-database = { module = "com.google.firebase:firebase-database-ktx", version.ref = "firebaseDatabase" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-concurrent-futures-ktx = { group = "androidx.concurrent", name = "concurrent-futures-ktx", version.ref = "concurrentFutures" }
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomCompiler" }
 androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomKtx" }
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
@@ -51,4 +53,3 @@ google-services = { id = "com.google.gms.google-services", version = "4.4.0" }
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
-
