@@ -44,6 +44,7 @@ android {
 dependencies {
     implementation(libs.firebase.firestore)
     implementation(libs.guava)
+    implementation(libs.androidx.concurrent.futures.ktx)
     implementation(libs.kotlinx.serialization.json.jvm)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
