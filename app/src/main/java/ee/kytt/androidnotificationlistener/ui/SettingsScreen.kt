@@ -23,8 +23,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import ee.kytt.androidnotificationlistener.Constants.PREF_CALLBACK_TOKEN
-import ee.kytt.androidnotificationlistener.Constants.PREF_CALLBACK_URL
 import ee.kytt.androidnotificationlistener.Constants.PREF_PACKAGE_PATTERN
 import ee.kytt.androidnotificationlistener.R
 import ee.kytt.androidnotificationlistener.ui.element.ContentGroup
@@ -68,6 +66,10 @@ fun SettingsScreen(
             HorizontalDivider(modifier = divModifier)
 
             AutoRevokeStatusButton(context)
+
+            HorizontalDivider(modifier = divModifier)
+
+            BackgroundPermissionButton(context)
         }
 
         ContentGroup(title = stringResource(R.string.filter)) {
@@ -80,28 +82,5 @@ fun SettingsScreen(
             )
         }
 
-        ContentGroup(title = stringResource(R.string.remote_server)) {
-            BackgroundSyncButton(context)
-
-            HorizontalDivider(modifier = divModifier)
-
-            TextField(
-                context = context,
-                prefKey = PREF_CALLBACK_URL,
-                labelSet = stringResource(R.string.callback_url),
-                labelNotSet = stringResource(R.string.callback_url_not_set),
-                description = stringResource(R.string.callback_url_description)
-            )
-
-            HorizontalDivider(modifier = divModifier)
-
-            TextField(
-                context = context,
-                prefKey = PREF_CALLBACK_TOKEN,
-                labelSet = stringResource(R.string.callback_token_set),
-                labelNotSet = stringResource(R.string.callback_token_not_set),
-                description = stringResource(R.string.callback_token_description)
-            )
-        }
     }
 }
