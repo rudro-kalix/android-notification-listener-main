@@ -8,7 +8,7 @@ This repository is the **Android collector part** of a larger payment-verificati
   **https://github.com/rudro-kalix/temp**
 
 ## System Architecture Diagram
-![Architecture Diagram]([diagram.png](https://github.com/rudro-kalix/android-notification-listener-main/blob/main/System%20Architecture%20Diagram.jpg?raw=true))
+![Architecture Diagram](https://raw.githubusercontent.com/rudro-kalix/android-notification-listener-main/main/System%20Architecture%20Diagram.jpg)
 
 
 
