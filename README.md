@@ -102,7 +102,7 @@ Examples:
 
 Use the companion project for verification/business logic:
 
-- https://github.com/rudro-kalix/temp
+- https://github.com/rudro-kalix/payment-gateway
 
 Your backend should validate amount/title/transaction ID and enforce one-time transaction use.
 
