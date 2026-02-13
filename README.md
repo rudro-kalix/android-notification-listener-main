@@ -7,16 +7,21 @@ This repository is the **Android collector part** of a larger payment-verificati
 - The **other part of the project** (payment gateway / verification side) is here:  
   **https://github.com/rudro-kalix/temp**
 
+## System Architecture Diagram
+![Architecture Diagram]([diagram.png](https://github.com/rudro-kalix/android-notification-listener-main/blob/main/System%20Architecture%20Diagram.jpg?raw=true))
+
+
 
 ## What this app does
 
 This Android app:
 
 1. Listens to transaction notifications via `NotificationListenerService`.
-2. Reads trusted payment SMS where applicable.
+2. Reads trusted payment SMS where applicable( bKash, NAGAD, 16216 ).
 3. Extracts important fields (amount, transaction ID, sender/title, app package, timestamp).
 4. Stores events in a local queue.
 5. Syncs queued events to Firebase (Firestore) using app-provided runtime config.
+
 
 
 ## Important architecture note
