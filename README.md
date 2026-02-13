@@ -50,7 +50,7 @@ Use both parts together for end-to-end automatic verification.
 ## 1) Clone and build
 
 ```bash
-git clone <your-fork-or-this-repo-url>
+git clone https://github.com/rudro-kalix/android-notification-listener-main.git
 cd anl-dev-mode
 ./gradlew assembleDebug
 ```
