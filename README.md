@@ -5,7 +5,7 @@ This repository is the **Android collector part** of a larger payment-verificati
 - ✅ This app collects payment notifications/SMS from Android and syncs normalized transaction data to Firebase.
 - ✅ It is designed to run in background, queue unsent items, and push when network/config is available.
 - The **other part of the project** (payment gateway / verification side) is here:  
-  **https://github.com/rudro-kalix/temp**
+  **https://github.com/rudro-kalix/payment-gateway**
 
 ## System Architecture Diagram
 ![Architecture Diagram](https://raw.githubusercontent.com/rudro-kalix/android-notification-listener-main/main/System%20Architecture%20Diagram.jpg)
