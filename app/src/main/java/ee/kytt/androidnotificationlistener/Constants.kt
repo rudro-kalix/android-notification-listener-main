@@ -8,7 +8,5 @@ object Constants {
     const val PREF_SYNCED_COUNT = "syncedCount"
     const val PREF_FAILED_COUNT = "failedCount"
     const val PREF_LAST_SYNC_TIME = "lastSyncTime"
-    const val PREF_SYNC_ENABLED = "syncEnabled"
-    const val PREF_PENDING_SYNC_ITEMS = "pendingSyncItems"
     const val SETTINGS_URI = "enabled_notification_listeners"
 }
