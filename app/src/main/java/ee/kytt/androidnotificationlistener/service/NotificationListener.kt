@@ -3,7 +3,6 @@ package ee.kytt.androidnotificationlistener.service
 import android.service.notification.NotificationListenerService
 import android.service.notification.StatusBarNotification
 import android.util.Log
-import com.google.firebase.firestore.FirebaseFirestore
 import ee.kytt.androidnotificationlistener.Constants
 import ee.kytt.androidnotificationlistener.data.Notification
 import kotlinx.serialization.json.Json
@@ -78,16 +77,11 @@ class NotificationListener : NotificationListenerService() {
 
         incrementCount(prefs, Constants.PREF_RECEIVED_COUNT)
 
-        // =====================
-        // FIRESTORE
-        // =====================
-        val firestore = FirebaseFirestore.getInstance()
-
         val transactionId = extractTransactionId(notification.text)
         val amount = extractReceivingAmount(notification.text)
         val docId = transactionId ?: UUID.randomUUID().toString()
 
-        val data = hashMapOf(
+        val data = mapOf(
             "source" to "notification",
             "docId" to docId,
             "transactionId" to transactionId,
@@ -98,20 +92,7 @@ class NotificationListener : NotificationListenerService() {
             "time" to notification.time
         )
 
-        firestore.collection("notifications")
-            .document(docId)
-            .set(data)
-            .addOnSuccessListener {
-                Log.d("FIREBASE", "Uploaded: $docId amount=$amount")
-                incrementCount(prefs, Constants.PREF_SYNCED_COUNT)
-                prefs.edit()
-                    .putLong(Constants.PREF_LAST_SYNC_TIME, System.currentTimeMillis())
-                    .apply()
-            }
-            .addOnFailureListener { e ->
-                Log.e("FIREBASE", "Upload failed", e)
-                incrementCount(prefs, Constants.PREF_FAILED_COUNT)
-            }
+        NotificationSyncManager.handleNotification(context, data)
 
         Log.d("NotificationListener", Json.Default.encodeToString(notification))
     }
