@@ -13,19 +13,27 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material3.Button
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import ee.kytt.androidnotificationlistener.Constants
 import ee.kytt.androidnotificationlistener.Constants.PREF_PACKAGE_PATTERN
 import ee.kytt.androidnotificationlistener.R
+import ee.kytt.androidnotificationlistener.service.NotificationSyncManager
 import ee.kytt.androidnotificationlistener.ui.element.ContentGroup
+import ee.kytt.androidnotificationlistener.ui.element.SettingSwitch
 import ee.kytt.androidnotificationlistener.ui.element.TextField
 
 @Composable
@@ -35,6 +43,8 @@ fun SettingsScreen(
     onBack: (() -> Unit)? = null
 ) {
     val divModifier = Modifier.padding(vertical = 16.dp)
+    val prefs = remember { context.getSharedPreferences(Constants.PREFS_NAME, Context.MODE_PRIVATE) }
+    var syncEnabled by remember { mutableStateOf(prefs.getBoolean(Constants.PREF_SYNC_ENABLED, true)) }
 
     Column(
         modifier = modifier
@@ -70,6 +80,26 @@ fun SettingsScreen(
             HorizontalDivider(modifier = divModifier)
 
             BackgroundPermissionButton(context)
+        }
+
+        ContentGroup(title = stringResource(R.string.sync_options_title)) {
+            SettingSwitch(
+                title = stringResource(R.string.sync_enabled_title),
+                checked = syncEnabled,
+                description = stringResource(R.string.sync_enabled_description)
+            ) { enabled ->
+                syncEnabled = enabled
+                prefs.edit().putBoolean(Constants.PREF_SYNC_ENABLED, enabled).apply()
+            }
+
+            Spacer(modifier = Modifier.height(12.dp))
+
+            Button(
+                onClick = { NotificationSyncManager.syncNow(context) },
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text(text = stringResource(R.string.sync_now))
+            }
         }
 
         ContentGroup(title = stringResource(R.string.filter)) {
