@@ -14,10 +14,6 @@
     <string name="monitor_matching_apps">Monitor matching applications</string>
     <string name="monitor_all_apps">Monitor all applications</string>
     <string name="monitor_matching_apps_description">Only monitor apps whose package names match the provided regular expression. Leave blank to monitor all apps.</string>
-    <string name="sync_options_title">Sync options</string>
-    <string name="sync_enabled_title">Sync to database</string>
-    <string name="sync_enabled_description">Turn off to queue incoming notifications. Use Sync Now to upload queued notifications manually.</string>
-    <string name="sync_now">Sync now</string>
     <string name="sync_stats_title">Sync stats</string>
     <string name="notifications_received">Notifications received</string>
     <string name="notifications_synced">Notifications synced</string>
