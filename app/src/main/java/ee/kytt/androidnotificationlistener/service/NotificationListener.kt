@@ -75,10 +75,14 @@ class NotificationListener : NotificationListenerService() {
             return
         }
 
-        incrementCount(prefs, Constants.PREF_RECEIVED_COUNT)
-
         val transactionId = extractTransactionId(notification.text)
         val amount = extractReceivingAmount(notification.text)
+        if (transactionId == null || amount == null) {
+            Log.d("NotificationListener", "Ignored notification without payment identifiers")
+            return
+        }
+
+        incrementCount(prefs, Constants.PREF_RECEIVED_COUNT)
         val docId = transactionId ?: UUID.randomUUID().toString()
 
         val data = mapOf(
@@ -87,8 +91,6 @@ class NotificationListener : NotificationListenerService() {
             "transactionId" to transactionId,
             "amount" to amount,
             "packageName" to notification.packageName,
-            "title" to notification.title,
-            "text" to notification.text,
             "time" to notification.time
         )
 
@@ -98,7 +100,9 @@ class NotificationListener : NotificationListenerService() {
     }
 
     private fun shouldMatch(packagePattern: String, name: String): Boolean {
-        if (packagePattern.isBlank()) return true
+        // Notification access is broad. Require an explicit allow-list pattern so
+        // unrelated application notifications are never collected by default.
+        if (packagePattern.isBlank()) return false
         return try {
             Regex(packagePattern).containsMatchIn(name)
         } catch (e: Exception) {

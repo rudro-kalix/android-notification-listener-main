@@ -1,9 +1,16 @@
 plugins {
-    alias(libs.plugins.google.services)
+    alias(libs.plugins.google.services) apply false
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     kotlin("plugin.serialization") version "2.1.20"
+}
+
+// A real Firebase configuration is environment-specific and must never be
+// committed. This keeps a clean clone buildable while applying the plugin in
+// configured development and release environments.
+if (file("google-services.json").isFile && file("google-services.json").readText().trim().startsWith("{")) {
+    apply(plugin = "com.google.gms.google-services")
 }
 
 android {

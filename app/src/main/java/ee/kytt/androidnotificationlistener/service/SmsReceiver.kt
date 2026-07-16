@@ -67,7 +67,6 @@ class SmsReceiver : BroadcastReceiver() {
                 "provider" to senderRaw,
                 "amount" to amount,
                 "transactionId" to transactionId,
-                "text" to body,
                 "timestamp" to timestamp,
                 "smsApp" to defaultSmsApp
             )

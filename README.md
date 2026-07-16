@@ -70,19 +70,9 @@ On first launch:
 - Allow **Background execution / battery optimization bypass**
 - Allow **Notification permission** (Android 13+)
 
-## 4) Configure Firebase from app settings (required)
+## 4) Configure Firebase (required for uploads)
 
-In **Settings → Firebase**, enter:
-
-- Firebase API Key
-- Firebase App ID
-- Firebase Project ID
-- (Optional) Storage Bucket
-- (Optional) Realtime DB URL
-- Firestore collection name
-- Source tag
-
-> Current behavior is app-input driven for Firebase runtime usage in sync paths; keep required fields filled before expecting uploads.
+Download `google-services.json` for your Android app from Firebase Console and place it at `app/google-services.json`. This repository intentionally ignores that file. `app/google-services.json.example` is only a placement reminder and is not a valid Firebase configuration.
 
 ## 5) Configure filters
 
@@ -116,8 +106,6 @@ Typical notification sync payload includes:
 - `transactionId`
 - `amount`
 - `packageName`
-- `title`
-- `text`
 - `time`
 
 SMS transaction payload includes:
@@ -126,7 +114,6 @@ SMS transaction payload includes:
 - `provider`
 - `amount`
 - `transactionId`
-- `text`
 - `timestamp`
 - `smsApp`
 
@@ -134,7 +121,7 @@ SMS transaction payload includes:
 ## Security and sharing notes
 
 - Do **not** commit private Firebase credentials into source control.
-- Prefer entering runtime Firebase values on-device.
+- Keep `google-services.json` local or provide it securely through CI/CD.
 - Use backend rules and verification logic to prevent replay/fraud.
 - This app reads only user-visible notifications/SMS with permission.
 
